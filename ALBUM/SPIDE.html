@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIDE</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+
+      justify-content: center;
+      align-items: center;
+      background-color: #051215;
+      font-family: Arial, sans-serif;
+
+        }
+
+    .grid {
+      max-width: 1000px;
+      width: 100%;
+      height: 85%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      transition: grid-template-columns 0.5s ease;
+    }
+
+    .grid:has(.left:hover) {
+      grid-template-columns: 2fr 0.5fr 0.5fr;
+    }
+    .grid:has(.center:hover) {
+      grid-template-columns: 0.5fr 2fr 0.5fr;
+    }
+    .grid:has(.right:hover) {
+      grid-template-columns: 0.5fr 0.5fr 2fr;
+    }
+
+    .grid > div {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .grid > div:hover img {
+      transform: scale(1.1);
+    }
+
+    .info-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      text-align: center;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .grid > div:hover .info-overlay {
+      opacity: 1;
+    }
+
+    .grid > div:hover h2 {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .grid > div:hover p {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    p {
+      font-size: 23px;
+      line-height: 1.5;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
+    }
+
+
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .title span {
+      --duration: 2s;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      margin-block: 4px;
+      color: transparent;
+      animation: reveal 1s calc(var(--delay) + var(--duration)) forwards;
+    }
+
+    .title span::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1d59ac;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: slideIn var(--duration) var(--delay) forwards,
+                slideOut 1s calc(var(--delay) + var(--duration)) forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        color: white;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(105%);
+      }
+    }
+  </style>
+  <style>
+.container {
+  width: 100%; /* Largura do container */
+height: 100%;
+  margin: 0 auto; /* Centraliza o container */
+  padding: 20px; /* Espaçamento interno */
+
+}
+
+.container2 {
+  width: 100%; /* Largura do container */
+height: 100%;
+  margin: 0 auto; /* Centraliza o container */
+  padding: 20px; /* Espaçamento interno */
+
+}
+  </style>
+</head>
+  <div class="container">
+  <div class="grid">
+    <div class="left">
+      <img src="https://preview.redd.it/cf3z97gyloy61.png?width=640&crop=smart&auto=webp&s=cb0bd57e445c5cc9879016795c7c3432654ac216" alt="Echidna">
+      <div class="info-overlay">
+        <h2 class="title">
+          <span style="--delay: 0s;">Echidna</span>
+          <span style="--delay: .5s;">(Pecado da Avareza)</span>
+        </h2>
+        <p>É uma personagem enigmática e ambiciosa, conhecida por seu desejo insaciável de conhecimento. Seu pecado, a "avareza", é mais uma fome constante por sabedoria e descobertas do que por riquezas materiais. Ela aparece como uma jovem de cabelos longos e brancos, com uma expressão serena que esconde sua verdadeira natureza inquisitiva. Echidna é fascinada pelo protagonista, Subaru, vendo nele uma oportunidade para satisfazer sua curiosidade, mesmo que isso envolva manipulação ou sacrifícios éticos. Sua personalidade complexa faz dela uma figura ao mesmo tempo atraente e assustadora, capaz de trair para atingir seus objetivos.</p>
+      </div>
+    </div>
+    <div class="center">
+      <img src="https://images-ng.pixai.art/images/orig/bbde5d22-96f8-4290-9517-d7bea183ebd3" alt="Minerva">
+      <div class="info-overlay">
+        <h2 class="title">
+          <span style="--delay: 0s;">Minerva</span>
+          <span style="--delay: .5s;">(Ira)</span>
+        </h2>
+        <p>é uma das Bruxas do Pecado e possui uma aparência jovem e vibrante, com cabelo loiro e um temperamento caloroso e impulsivo. Apesar de ser associada ao Ira, Minerva é extremamente compassiva e tem um forte senso de justiça. Sua habilidade especial permite curar outras pessoas ao golpeá-las, redirecionando seu poder destrutivo em energia restauradora. Ela é movida pelo desejo de salvar e proteger os outros, mas essa atitude extremada às vezes a coloca em situações intensas.</p>
+      </div>
+    </div>
+    <div class="right">
+      <img src="https://preview.redd.it/az4x8jbil3w71.jpg?auto=webp&s=ae78aef3992f5be10d52595376ee97a20570cd46" alt="Daphne">
+      <div class="info-overlay">
+        <h2 class="title">
+          <span style="--delay: 0s;">Daphne</span>
+          <span style="--delay: .5s;">(Gula)</span>
+        </h2>
+          <p>é uma das Bruxas dos Pecados que deixou um impacto marcante no mundo da série. Criadora de inúmeras feras demoníacas, como o Grande Coelho, a Baleia Branca e o Serpente Negra, ela tinha o objetivo de resolver a fome no mundo, mesmo que seus métodos fossem cruéis e distorcidos. Daphne possui uma aparência frágil, com olhos vendados, e está sempre dentro de uma espécie de sarcófago com correntes, como forma de contê-la devido ao seu imenso apetite e ao perigo que representa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

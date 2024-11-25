@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Zoom In (23-11-23)</title>
+  <meta name="author" content="Aurélio-Sol">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+    margin: 0;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+.column div {
+    position: relative;
+    overflow: hidden;
+}
+.column figure {
+    margin: 0;
+}
+.column img {
+    width: 100%; /* Use 100% for responsiveness */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+.column:hover img {
+    transform: scale(1.1);
+}
+@media (min-width: 768px) {
+    .column {
+        max-width: 80%;
+    }
+}
+
+  </style>
+</head>
+<body>
+    <div class="column">
+        <div>
+            <figure><img src="https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" /></figure>
+        </div>
+    </div>
+
+
+</body>
+</html>
