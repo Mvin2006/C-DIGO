@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website | SortedCoding</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden ;
+    background-color: black;
+    color: white;
+}
+
+header{
+    margin-top: 20px;
+    position: fixed ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9% ;
+    background-color: transparent;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 3rem;
+    color: #b74b4d;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover{
+    color: #cc3427;
+    transform: scale(1.1);
+}
+
+nav a{
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color: #b74b4d;
+    border-bottom: 3px solid #b74b4d;
+}
+
+@media(max-width:995px){
+    nav{
+        position: absolute;
+        display: none;
+        top: 0;
+        right: 0;
+        width: 40%;
+        border-left: 3px solid #b74b4d;
+        border-bottom: 3px solid #b74b4d;
+        border-bottom-left-radius: 2rem;
+        padding: 1rem solid;
+        background-color: #1b1b1b;
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    nav.active{
+        display: block;
+    }
+    nav a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0; 
+    }
+
+    nav a:hover,
+    nav a.active{
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-bottom: 0.5rem solid #b74b4d;
+    }
+    
+}
+
+section{
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: black;
+}
+
+.home .home-content h1{
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+span{
+    color: #b74b4d;
+}
+
+.home-content p{
+    font-size: 1.6rem;
+}
+
+.home-img{
+    border-radius: 50%;
+}
+
+.home-img img{
+    position: relative;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 20px solid;
+    cursor: pointer;
+    transition: 0.2s linear;
+
+}
+
+.home-img img:hover{
+    transform: scale(1.1);
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid #b74b4d;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+    color: #b74b4d;
+}
+
+.social-icons a:hover{
+    color: black;
+    transform: scale(1.3) translateY(-5px);
+    background-color: #b74b4d;
+    box-shadow: 0 0 25px #b74b4d;
+}
+
+.btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: black;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #b74b4d;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid #b74b4d;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transform: scale(1.03);
+    background-color: #b74b4d;
+    color: black;
+    box-shadow: 0 0 25px #b74b4d;
+}
+
+.home-content .typewriter{
+    font-size: clamp(4rem, 3rem + 5vw, 2.5rem);
+    font-weight: 1000;
+}
+
+@media(max-width:1000px){
+    .home{
+        gap: 4rem;
+    }
+}
+
+@media(max-width:995px){
+    .home{
+        flex-direction: column;
+        margin: 5rem 4rem;
+
+    }
+    
+    .home-content h1{
+        font-size: 5rem;
+    }
+    
+    .home-img img{
+        width: 50vh;
+        margin-top: 4rem;
+    }
+
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Ankit</a>
+
+      <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Skills</a>
+        <a href="#">Education</a>
+        <a href="#">Experience</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="home">
+      <div class="home-img">
+        <img src="image.jpeg" alt="" />
+      </div>
+      <div class="home-content">
+        <h1>Hi, It's <span>Ankit</span></h1>
+        <div class="typewriter">
+          I'm a <span class="typewriter-text"></span><label for="">|</label>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+            aliquid qui, nulla dicta distinctio id aliquam voluptatibus hic
+            doloribus culpa eligendi? Libero magni porro aspernatur eveniet
+            expedita. Laborum eum enim ipsum ea.
+          </p>
+          <div class="social-icons">
+            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="https://github.com/SortedCoding" target="_blank"
+              ><ion-icon name="logo-github"></ion-icon
+            ></a>
+            <a href="https://www.instagram.com/sortedcoding" target="_blank"
+              ><ion-icon name="logo-instagram"></ion-icon
+            ></a>
+            <a href="https://www.youtube.com/@SortedCoding" target="_blank"
+              ><ion-icon name="logo-youtube"></ion-icon
+            ></a>
+          </div>
+          <a href="#" class="btn">Hire Me</a>
+        </div>
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      // Typewriter Effect
+
+const texts = [
+    "DEVELOPER",
+    "DESIGNER",
+    "YOUTUBER"
+]
+
+let speed = 100;
+const textElements = document.querySelector(".typewriter-text");
+
+let textIndex = 0;
+let characterIndex = 0;
+
+function typeWriter() {
+    if(characterIndex < texts[textIndex].length){
+        textElements.innerHTML += texts[textIndex].charAt(characterIndex);
+        characterIndex++;
+        setTimeout(typeWriter, speed);
+    }
+    else{
+        setTimeout(eraseText, 1000);
+    }
+}
+
+function eraseText() {
+    if(characterIndex > 0){
+        textElements.innerHTML = texts[textIndex].substring(0, characterIndex - 1);
+        characterIndex--;
+        setTimeout(eraseText, speed);
+    }
+    else{
+        textIndex = (textIndex + 1) % texts.length;
+        characterIndex = 0;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.onload = typeWriter
+    </script>
+  </body>
+</html>

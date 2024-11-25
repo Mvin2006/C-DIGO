@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>load-SOL</title>
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="author" content="Aurélio-Sol">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #090909;
+  display: grid;
+  place-items: center;
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  width: 15px;
+  height: 35px;
+  background-color: #3bcbdb;
+  animation: loading 0.8s infinite ease-in-out;
+}
+
+.bar-1 {
+  animation-delay: 0.15s;
+}
+.bar-2 {
+  animation-delay: 0.3s;
+}
+.bar-3 {
+  animation-delay: 0.45s;
+}
+
+@keyframes loading {
+  0%,
+  80%,
+  100% {
+    height: 32px;
+  }
+  40% {
+    height: 52px;
+  }
+}
+
+  </style>
+  </head>
+  <body>
+    <div class="loader">
+      <div class="bar bar-1"></div>
+      <div class="bar bar-2"></div>
+      <div class="bar bar-3"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typewriter Animation</title>
+   <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: hsl(251, 41%, 4%);
+  color: hsl(251, 41%, 90%);
+  font-family: system-ui;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+#typewriter {
+  color: hsl(251, 41%, 55%);
+}
+
+#cursor {
+  color: hsl(277, 49%, 53%);
+  font-weight: bold;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+   </style>
+   
+    <script>
+const words = ["give you up", "let you down", "run around", "make you cry"];
+const el = document.querySelector("#typewriter");
+
+const sleepTime = 100;
+let currWordIndex = 0;
+
+const sleep = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time));
+};
+
+const effect = async () => {
+  while (true) {
+    currWord = words[currWordIndex];
+
+    for (let i = 0; i < currWord.length; i++) {
+      el.innerText = currWord.substring(0, i + 1);
+      await sleep(sleepTime);
+    }
+
+    await sleep(500);
+
+    if (currWordIndex >= words.length - 1) {
+      currWordIndex = 0;
+      await sleep(1000);
+    } else currWordIndex++;
+  }
+};
+
+effect();
+
+    </script>
+  </head>
+  <body>
+
+    <h1>Never Gonna <span id="typewriter"></span><span id="cursor">|</span></h1>
+
+  </body>
+</html>

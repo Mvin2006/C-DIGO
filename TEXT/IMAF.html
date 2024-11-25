@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMAF</title>
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="author" content="Aurélio-Sol">
+  <style>
+    *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Clash Grotesk";
+  height: 100vh;
+  background-color: #000;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg,
+.bg-reveal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(./bg.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.bg > h1 {
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+  background: linear-gradient(to right, #f61513, #112fdf);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+
+.bg-reveal {
+  display: grid;
+  grid-auto-flow: column;
+  z-index: 10;
+}
+
+.bg-reveal > div {
+  height: 100%;
+  background: url("./bg-reveal.jpg") repeat fixed;
+  background-size: cover;
+  background-position: 50% 100%;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 1.6s ease-in-out;
+}
+
+.bg-reveal > div:hover {
+  transition: 0s;
+  opacity: 1;
+}
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="bg">
+        <h1>Creative Image <br> Reveal on Hover</h1>
+      </div>
+      <div class="bg-reveal">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>
