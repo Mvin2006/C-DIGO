@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Carousel Slider (08-10-23)</title>
+    <meta name="author" content="Aurélio-Sol">
+<style>
+    body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 125vh; /* Pode ser ajustado para 'vh' ou '%', dependendo do layout desejado */
+    border-radius: 12px; /* Aumenta o raio para um visual mais suave */
+    overflow: hidden;
+    background: rgba(59, 59, 59, 0.4); /* Aumenta a opacidade para mais contraste */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao carrossel */
+    padding: 15px;
+    margin: 15px;
+}
+
+.wrap {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.wrap img {
+    height: 450px;
+    margin: 0 5px; /* Reduz a margem lateral para um visual mais limpo */
+    border-radius: 10px; /* Consistência com o carrossel */
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    padding: 10px; /* Ajusta o padding para dar um efeito de espaço mais equilibrado */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Adiciona sombra às imagens */
+}
+
+.wrap img:hover {
+    transform: scale(1.1); /* Aumenta o efeito de hover para torná-lo mais evidente */
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 8;
+    transition: background-color 0.3s ease; /* Adiciona transição suave ao fundo */
+}
+
+.nav-button.left {
+    left: 15px; /* Espaço maior para um layout mais limpo */
+}
+
+.nav-button.right {
+    right: 15px; /* Espaço maior para um layout mais limpo */
+}
+
+.carousel .nav-button {
+    background-color: rgba(0, 255, 252, 0.9); /* Leve aumento na opacidade */
+    border: 2px solid #00fffc;
+}
+
+.carousel .nav-button:hover {
+    background-color: rgba(0, 255, 252, 1); /* Efeito de hover mais pronunciado */
+    transform: scale(1.1); /* Efeito de escala para o botão */
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="carousel">
+        <div class="wrap">
+            <img src="https://i.pinimg.com/564x/29/88/01/29880130ede2c32f479dd1428869ebd0.jpg" />
+            <img src="https://i.pinimg.com/564x/ae/3c/40/ae3c403d63a605fe384ed91decbef793.jpg" />
+            <img src="https://i.pinimg.com/564x/08/0d/12/080d121275cf85d1f70dc69e0c859887.jpg" />
+            <img src="https://i.pinimg.com/564x/59/6f/40/596f401866ff42bb2a5ef0726eb09b76.jpg" />
+            <img src="https://i.pinimg.com/564x/97/eb/b6/97ebb6baf9646e7c420a3df12e5fdd81.jpg" />
+        </div>
+        <button class="nav-button left">&#10094;</button>
+        <button class="nav-button right">&#10095;</button>
+    </div>
+  
+
+    <script>
+        const wrap = document.querySelector('.wrap');
+const images = wrap.children;
+const indicatorsContainer = document.querySelector('.indicators');
+let currentIndex = 0;
+let autoSlideInterval;
+let mouseMoved = false;
+
+function moveCarousel() {
+    const imageWidth = images[0].offsetWidth + 10; // Considering margin
+    wrap.style.transform = `translateX(${-currentIndex * imageWidth}px)`;
+    updateIndicators();
+}
+
+function updateIndicators() {
+    indicatorsContainer.innerHTML = '';
+    for (let i = 0; i < images.length; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator' + (i === currentIndex ? ' active' : '');
+        indicator.addEventListener('click', () => {
+            currentIndex = i; // Update current index based on indicator clicked
+            moveCarousel();
+        });
+        indicatorsContainer.appendChild(indicator);
+    }
+}
+
+document.querySelector('.carousel').addEventListener('mousemove', (e) => {
+    const carouselRect = wrap.getBoundingClientRect();
+    const mouseX = e.clientX - carouselRect.left; // Mouse position within the carousel
+    const midpoint = carouselRect.width / 2;
+
+    // Check if mouse has moved significantly
+    if (mouseX < midpoint && currentIndex > 0 && !mouseMoved) {
+        currentIndex--; // Move backward
+        mouseMoved = true; // Set the flag to true
+    } else if (mouseX >= midpoint && currentIndex < images.length - 1 && !mouseMoved) {
+        currentIndex++; // Move forward
+        mouseMoved = true; // Set the flag to true
+    }
+});
+
+document.querySelector('.carousel').addEventListener('mouseleave', () => {
+    autoSlideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length; // Wrap around
+        moveCarousel();
+    }, 3000); // Auto-slide every 3 seconds
+    mouseMoved = false; // Reset the mouse moved flag
+});
+
+document.querySelector('.carousel').addEventListener('mouseenter', () => {
+    clearInterval(autoSlideInterval);
+    mouseMoved = false; // Reset the mouse moved flag
+});
+
+document.querySelectorAll('.nav-button').forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.classList.contains('left') && currentIndex > 0) {
+            currentIndex--;
+        } else if (button.classList.contains('right') && currentIndex < images.length - 1) {
+            currentIndex++;
+        }
+
+        moveCarousel();
+    });
+});
+
+updateIndicators();
+moveCarousel();
+autoSlideInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length; // Wrap around
+    moveCarousel();
+}, 3000); // Start auto-slide
+    </script>
+
+</body>
+
+</html>
